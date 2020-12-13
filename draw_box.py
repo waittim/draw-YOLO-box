@@ -9,7 +9,7 @@ raw_images_folder = '/Users/waittim/Desktop/Draw_yolo/raw_images/'  #检查图�
 
 save_images_folder = '/Users/waittim/Desktop/Draw_yolo/save_image/'  #保存图片文件夹save_image路径
 
-text_image_name_list_file_path = '/Users/waittim/Desktop/Draw_yolo/text_image_name_list.txt'  #里面有检测图片名称得txt文件路径
+text_image_name_list_file_path = '/Users/waittim/Desktop/Draw_yolo/text_image_name_list.txt'  #里面有检测图片名称txt文件路径
 
 
 #函数：在一幅图片对应位置上加上矩形框  image_name 图片名称不含后缀 

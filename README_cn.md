@@ -1,5 +1,5 @@
 # Draw YOLO boxes
-[\[English\]](https://github.com/waittim/draw_yolo_box/edit/main/README.md)
+[\[English\]](https://github.com/waittim/draw_yolo_box/blob/main/README.md)
 
 基于YOLO格式标注文件，在原图片上标出检测框。可帮助检查标注的正确性，并将含有错标的原图像取出，您可以使用[makesense.ai](https://www.makesense.ai/)等工具重新进行标注。
 
@@ -17,7 +17,7 @@
 ### 提取相应原始图片
 1. 将含有错标的图片放入**wrong**文件夹.
 2. 清空**save_image**文件夹.
-3. 在terminal中运行`get_origin_image.py`。
+3. 在terminal中运行`python get_origin_image.py`。
  
 所有对应的原始图片现已被存至**save_image**文件夹。
 

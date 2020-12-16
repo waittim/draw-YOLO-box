@@ -7,7 +7,7 @@ Draw bounding boxes on original images based on yolo format annotation. It can h
 
 ### Draw bounding boxes
 1. Put all of your raw images in **raw_images** folder.
-2. Put all of your annotation file(YOLO format txt) in **labels** folder.
+2. Put all of your annotation files(YOLO format txt) in **labels** folder.
 3. Write your class information into **classes.txt**.
 4. Run `python draw_box.py` in your terminal.
 

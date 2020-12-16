@@ -1,4 +1,5 @@
 # Draw YOLO boxes
+[\[中文\]](https://github.com/waittim/draw_yolo_box/edit/main/README_cn.md)
 
 Draw bounding boxes on original images based on yolo format annotation. Help checking correctness of boxes and extract the images with wrong boxes.
 
@@ -19,5 +20,6 @@ Now you have the images with bounding boxes in the **save_image** folder.
  
 Now you have the raw images which have incorrect bounding boxes inside in the **save_image** folder.
 
+## Others
 
 > Thanks for [批量将yolo-v3检测结果在原图上画矩形框显示](https://blog.csdn.net/qq_32761549/article/details/90210036). I modified the code and enhanced its ease of use, added multi-label processing and labeling of category names, and provided a method to obtain the original image.

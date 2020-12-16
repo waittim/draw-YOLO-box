@@ -5,7 +5,7 @@ import random
 
 
 #全局变量进行路径配置
-label_folder ='./labels/'  #检测结果存放文件夹labels路径
+label_folder = './labels/'  #检测结果存放文件夹labels路径
 
 raw_images_folder = './raw_images/'  #检查图片存放文件夹raw_images路径
 

@@ -1,7 +1,7 @@
 # Draw YOLO boxes
 [\[中文\]](https://github.com/waittim/draw_yolo_box/edit/main/README_cn.md)
 
-Draw bounding boxes on original images based on yolo format annotation. Help checking correctness of boxes and extract the images with wrong boxes.
+Draw bounding boxes on original images based on yolo format annotation. It can help you checking the correctness of annotation and extract the images with wrong boxes. You can use [makesense.ai](https://www.makesense.ai/) to re-annotate them.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Now you have the images with bounding boxes in the **save_image** folder.
 2. Clean up **save_image** folder.
 3. Run `get_origin_image.py` in your terminal.
  
-Now you have the raw images which have incorrect bounding boxes inside in the **save_image** folder.
+Now you have the raw images which were annotated incorrectly in the **save_image** folder.
 
 ## Others
 

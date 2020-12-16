@@ -18,3 +18,6 @@ Now you have the images with bounding boxes in the **save_image** folder.
 3. Run `get_origin_image.py` in your terminal.
  
 Now you have the raw images which have incorrect bounding boxes inside in the **save_image** folder.
+
+
+> Thanks for [批量将yolo-v3检测结果在原图上画矩形框显示](https://blog.csdn.net/qq_32761549/article/details/90210036). I modified the code and enhanced its ease of use, added multi-label processing and labeling of category names, and provided a method to obtain the original image.

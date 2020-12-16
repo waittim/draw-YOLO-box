@@ -1,4 +1,4 @@
-# draw_yolo_box
+# Draw YOLO boxes
 
 Draw bounding boxes on original images based on yolo format annotation. Help checking correctness of boxes and extract the images with wrong boxes.
 

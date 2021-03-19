@@ -7,19 +7,19 @@
 ## 用法
 
 ### 绘制标记框
-1. 将所有原始图片放入**raw_images**文件夹。
-2. 将所有标注文件（YOLO格式txt）放入**labels**文件夹。
-3. 将你的类别信息写入**classes.txt**，依次每个一行。
+1. 将所有原始图片放入`~/raw_images/`文件夹。
+2. 将所有标注文件（YOLO格式txt）放入`~/labels/`文件夹。
+3. 将你的类别信息写入`~/classes.txt/`，依次每个一行。
 4. 在terminal中运行`python draw_box.py`。
 
-所有画出了标记框的图片现已被存至**save_image**文件夹。
+所有画出了标记框的图片现已被存至`~/save_image/`文件夹。
 
 ### 提取相应原始图片
-1. 将含有错标的图片放入**wrong**文件夹.
-2. 清空**save_image**文件夹.
+1. 将含有错标的图片放入`~/wrong/`文件夹.
+2. 清空`~/save_image/`文件夹.
 3. 在terminal中运行`python get_origin_image.py`。
  
-所有对应的原始图片现已被存至**save_image**文件夹。
+所有对应的原始图片现已被存至`~/save_image/`文件夹。
 
 ## 其他
 

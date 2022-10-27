@@ -40,7 +40,7 @@ def draw_box_on_image(image_name, classes, colors, label_folder, raw_images_fold
     save_file_path = os.path.join(save_images_folder,'%s.jpg'%(image_name)) #本次保存图片jpg路径
     
     # flag_people_or_car_data = 0  #变量 代表类别
-    source_file = open(txt_path)
+    source_file = open(txt_path) if os.path.exists(txt_path) else []
     image = cv2.imread(image_path)
     try:
         height, width, channels = image.shape

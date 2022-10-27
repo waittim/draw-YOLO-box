@@ -92,7 +92,7 @@ if __name__ == '__main__':           # 只有在文件作为脚本文件直接�
 
     make_name_list(raw_images_folder, name_list_path) #执行写入txt函数
 
-    classes = image_names = open(classes_path).read().strip().split()
+    classes = image_names = open(classes_path).read().strip().split('\n')
     random.seed(42)
     colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(classes))]
 

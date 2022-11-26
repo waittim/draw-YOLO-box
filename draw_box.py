@@ -40,7 +40,7 @@ def draw_box_on_image(image_name, classes, colors, label_folder, raw_images_fold
     save_file_path = os.path.join(save_images_folder,'%s.jpg'%(image_name)) #本次保存图片jpg路径
     
     # flag_people_or_car_data = 0  #变量 代表类别
-    source_file = open(txt_path)
+    source_file = open(txt_path) if os.path.exists(txt_path) else []
     image = cv2.imread(image_path)
     try:
         height, width, channels = image.shape
@@ -92,7 +92,7 @@ if __name__ == '__main__':           # 只有在文件作为脚本文件直接�
 
     make_name_list(raw_images_folder, name_list_path) #执行写入txt函数
 
-    classes = image_names = open(classes_path).read().strip().split()
+    classes = image_names = open(classes_path).read().strip().split('\n')
     random.seed(42)
     colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(classes))]
 

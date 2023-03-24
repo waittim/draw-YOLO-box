@@ -4,16 +4,12 @@ import os
 import random
 
 
-# 全局变量进行路径配置
-LABEL_FOLDER = './labels/'  # 检测结果存放文件夹labels路径
-
-RAW_IMAGE_FOLDER = './raw_images/'  # 检查图片存放文件夹raw_images路径
-
-OUTPUT_IMAGE_FOLDER = './save_image/'  # 保存图片文件夹save_image路径
-
-IMAGE_NAME_LIST_PATH = './name_list.txt'  # 里面有检测图片名称txt文件路径
-
-CLASS_PATH = './classes.txt'
+# Config the global variables 
+LABEL_FOLDER = './labels/'  # Put the label files in this folder. 检测结果存放文件夹labels路径
+RAW_IMAGE_FOLDER = './raw_images/'  # Put the original images without boxes in this folder. 检查图片存放文件夹raw_images路径
+OUTPUT_IMAGE_FOLDER = './save_image/'  # The output images would be saved to this folder. 保存图片文件夹save_image路径
+IMAGE_NAME_LIST_PATH = './name_list.txt'  # The file name of images will be saved into this text file. 内含有检测图片名的txt文件路径
+CLASS_PATH = './classes.txt' # Put the class names in this text file.
 
 
 def plot_one_box(x, image, color=None, label=None, line_thickness=None):
@@ -31,10 +27,10 @@ def plot_one_box(x, image, color=None, label=None, line_thickness=None):
         cv2.putText(image, label, (c1[0], c1[1] - 2), 0, tl / 3,
                     [225, 255, 255], thickness=tf, lineType=cv2.LINE_AA)
 
-# 函数：在一幅图片对应位置上加上矩形框  image_name 图片名称不含后缀
-
-
 def draw_box_on_image(image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDER, OUTPUT_IMAGE_FOLDER):
+    """
+    This function will add rectangle boxes on the images.
+    """
     txt_path = os.path.join(LABEL_FOLDER, '%s.txt' %
                             (image_name))  # 本次检测结果txt路径
     print(image_name)
@@ -76,9 +72,10 @@ def draw_box_on_image(image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDE
     return box_number
 
 
-# 函数：通过保存有原始图片得文件夹，生成写有所有检测图片名称（不带后缀）得txt
 def make_name_list(RAW_IMAGE_FOLDER, IMAGE_NAME_LIST_PATH):
-
+    """
+    This function will collect the image names without extension and save them in the name_list.txt. 
+    """
     image_file_list = os.listdir(RAW_IMAGE_FOLDER)  # 得到该路径下所有文件名称带后缀
 
     text_image_name_list_file = open(
@@ -101,11 +98,11 @@ if __name__ == '__main__':           # 只有在文件作为脚本文件直接�
               for _ in range(len(classes))]
 
     image_names = open(IMAGE_NAME_LIST_PATH).read(
-    ).strip().split()  # 得到图片名字不带后缀
+    ).strip().split()  # 得到不带后缀的图片名
 
     box_total = 0
     image_total = 0
-    for image_name in image_names:  # 例遍图片名称
+    for image_name in image_names:  # 遍历图片名称
         box_num = draw_box_on_image(
             image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDER, OUTPUT_IMAGE_FOLDER)  # 对图片画框
         box_total += box_num

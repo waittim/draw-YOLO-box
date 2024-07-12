@@ -33,9 +33,7 @@ def draw_box_on_image(image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDE
     """
     txt_path = os.path.join(LABEL_FOLDER, '%s.txt' %
                             (image_name))  # 本次检测结果txt路径
-    print(image_name)
-    if image_name == '.DS_Store':
-        return 0
+    print('\n',image_name)
     image_path = os.path.join(RAW_IMAGE_FOLDER, '%s.jpg' %
                               (image_name))  # 本次原始图片jpg路径
 
@@ -43,7 +41,7 @@ def draw_box_on_image(image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDE
         OUTPUT_IMAGE_FOLDER, '%s.jpg' % (image_name))  # 本次保存图片jpg路径
 
     # flag_people_or_car_data = 0  #变量 代表类别
-    source_file = open(txt_path) if os.path.exists(txt_path) else []
+    source_file = list(open(txt_path)) if os.path.exists(txt_path) else []
     image = cv2.imread(image_path)
     try:
         height, width, channels = image.shape
@@ -52,6 +50,7 @@ def draw_box_on_image(image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDE
         return 0
 
     box_number = 0
+    print(f"Source: {source_file}")
     for line in source_file:  # 例遍 txt文件得每一行
         staff = line.split()  # 对每行内容 通过以空格为分隔符对字符串进行切片
         class_idx = int(staff[0])
@@ -102,7 +101,7 @@ if __name__ == '__main__':           # 只有在文件作为脚本文件直接�
 
     box_total = 0
     image_total = 0
-    for image_name in image_names:  # 遍历图片名称
+    for image_name in image_names: 
         box_num = draw_box_on_image(
             image_name, classes, colors, LABEL_FOLDER, RAW_IMAGE_FOLDER, OUTPUT_IMAGE_FOLDER)  # 对图片画框
         box_total += box_num

@@ -23,4 +23,4 @@ def make_name_list(RAW_IMAGE_FOLDER,IMAGE_NAME_LIST_PATH):
     f.close()
 if __name__=='__main__':
     make_name_list(RAW_IMAGE_FOLDER,IMAGE_NAME_LIST_PATH);c=open(CLASS_PATH).read().strip().split('\n');random.seed(42);cols=[[random.randint(0,255) for _ in range(3)] for _ in c]
-    for n in open(IMAGE_NAME_LIST_PATH).read().split():draw_box_on_image(n,c,cols,LABEL_FOLDER,RAW_IMAGE_FOLDER,OUTPUT_IMAGE_FOLDER)
+    for n in open(IMAGE_NAME_LIST_PATH).read().strip().split('\n'):draw_box_on_image(n,c,cols,LABEL_FOLDER,RAW_IMAGE_FOLDER,OUTPUT_IMAGE_FOLDER)

@@ -1,0 +1,20 @@
+# Working datasets (local only)
+labels/
+raw_images/
+save_image/
+wrong/
+name_list.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

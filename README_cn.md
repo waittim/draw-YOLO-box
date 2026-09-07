@@ -1,26 +1,48 @@
 # Draw YOLO boxes
-[\[English\]](https://github.com/waittim/draw_yolo_box/blob/main/README.md)
 
-基于YOLO格式标注文件，在原图片上画出标记框。可帮助检查标注的正确性，并将含有错标的原图像取出，您可以使用[makesense.ai](https://www.makesense.ai/)等工具重新进行标注。
+[English](README.md)
 
+根据 YOLO 格式标注，在原图上画框，方便检查标注质量，并把错标样本对应的原图提取出来重新标注（例如用 [makesense.ai](https://www.makesense.ai/)）。
+
+## 安装
+
+```bash
+pip install -r requirements.txt
+```
+
+`piexif` 仅在使用 `get_origin_image.py` 且需要去掉 JPEG EXIF 时用到（默认开启）。
 
 ## 用法
 
-### 绘制标记框
-1. 将所有原始图片放入`./raw_images/`文件夹。
-2. 将所有标注文件（YOLO格式txt）放入`./labels/`文件夹。
-3. 将你的类别信息写入**classes.txt**，依次每个一行。
-4. 在terminal中运行`python draw_box.py`。
+### 画框
 
-所有画出了标记框的图片现已被存至`./save_image/`文件夹。
+1. 原图放到 `./raw_images/`（支持 `.jpg` / `.jpeg` / `.png` / `.webp` / `.bmp`）
+2. YOLO txt 放到 `./labels/`（与图片同名）
+3. 类别写入 `classes.txt`（每行一个）
+4. 运行：
 
-### 提取相应原始图片
-1. 将含有错标的图片放入`./wrong/`文件夹.
-2. 清空`./save_image/`文件夹.
-3. 在terminal中运行`python get_origin_image.py`。
- 
-所有对应的原始图片现已被存至`./save_image/`文件夹。
+```bash
+python draw_box.py
+# 或指定路径：
+python draw_box.py --images ./raw_images --labels ./labels --output ./save_image --classes ./classes.txt
+```
 
-## 其他
+结果在 `./save_image/`。每张图在画完所有框后只写入一次。
 
-> 感谢[批量将yolo-v3检测结果在原图上画矩形框显示](https://blog.csdn.net/qq_32761549/article/details/90210036)提供的框架。在此基础上我改进了易用性，增加了对多类别标签的处理与标注，并增加了提取原图片的功能。 
+### 提取错标对应原图
+
+1. 把画错的图放到 `./wrong/`
+2. 如需干净输出可清空 `./save_image/`
+3. 运行：
+
+```bash
+python get_origin_image.py
+```
+
+会按文件名（不含扩展名）从 `./raw_images/` 复制原图到 `./save_image/`。
+
+## 说明
+
+- 支持文件名含空格（名单按换行分割）
+- 缺少 label 时会打日志，并仍保存无框图片
+- 框会裁剪到图像范围内；格式错误的标注行会跳过并警告

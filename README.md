@@ -1,25 +1,53 @@
 # Draw YOLO boxes
-[\[中文\]](https://github.com/waittim/draw_yolo_box/blob/main/README_cn.md)
 
-Draw bounding boxes on original images based on yolo format annotation. It can help you checking the correctness of annotation and extract the images with wrong boxes. You can use [makesense.ai](https://www.makesense.ai/) to re-annotate them.
+[中文](README_cn.md)
+
+Draw bounding boxes on original images from YOLO-format annotations. Useful for checking label quality and pulling the originals of bad samples for re-annotation (e.g. with [makesense.ai](https://www.makesense.ai/)).
+
+## Install
+
+```bash
+pip install -r requirements.txt
+```
+
+`piexif` is only needed if you use `get_origin_image.py` and want JPEG EXIF stripped (enabled by default).
 
 ## Usage
 
 ### Draw bounding boxes
-1. Put all of your raw images in `./raw_images/` folder.
-2. Put all of your annotation files(YOLO format txt) in `./labels/` folder.
-3. Write your class information into **classes.txt**.
-4. Run `python draw_box.py` in your terminal.
 
-Now you have the images with bounding boxes in the `./save_image/` folder.
+1. Put raw images in `./raw_images/` (`.jpg` / `.jpeg` / `.png` / `.webp` / `.bmp`).
+2. Put YOLO txt labels in `./labels/` (same stem as the image).
+3. Put class names in `classes.txt` (one per line).
+4. Run:
 
-### Extract the corresponding raw images 
-1. Put the images with incorrect boxes into `./wrong/` folder.
-2. Clean up `./save_image/` folder.
-3. Run `python get_origin_image.py` in your terminal.
- 
-Now you have the raw images which were annotated incorrectly in the `./save_image/` folder.
+```bash
+python draw_box.py
+# or with custom paths:
+python draw_box.py --images ./raw_images --labels ./labels --output ./save_image --classes ./classes.txt
+```
 
-## Others
+Outputs go to `./save_image/`. Each image is written **once** after all boxes are drawn.
 
-> Thanks for [批量将yolo-v3检测结果在原图上画矩形框显示](https://blog.csdn.net/qq_32761549/article/details/90210036). I modified the code and enhanced its ease of use, added multi-label processing and labeling of category names, and provided a method to obtain the original image.
+### Extract originals for wrong boxes
+
+1. Put images with incorrect boxes into `./wrong/`.
+2. Clear `./save_image/` if you want a clean output folder.
+3. Run:
+
+```bash
+python get_origin_image.py
+# python get_origin_image.py --wrong ./wrong --images ./raw_images --output ./save_image
+```
+
+Matching originals (by filename stem) are copied into `./save_image/`.
+
+## Notes
+
+- Image stems that contain spaces are supported (name lists are newline-separated).
+- Missing labels log a message and still copy/save the image without boxes.
+- Boxes are clipped to image bounds; malformed label lines are skipped with a warning.
+
+## Credit
+
+Based on [批量将yolo-v3检测结果在原图上画矩形框显示](https://blog.csdn.net/qq_32761549/article/details/90210036), with multi-label drawing, class names, safer I/O, and a helper to recover originals.
